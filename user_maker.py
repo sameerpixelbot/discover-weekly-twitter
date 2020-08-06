@@ -46,8 +46,8 @@ for user in users:
         user_dict['user']['id']=user_json['id']
         user_dict['user']['id_str']=user_json['id_str']
         user_dict['user']['name']=user_json['name']
-        user_dict['folls_id']=[]
-        user_dict['edgs']=[]
+        user_dict['friends_id']=[]
+        user_dict['edges']=[]
         
         core_user=bool(input(f"The user is {user_json['screen_name']}, press any for True, press nothing for False : "))
         user_dict['core_user']=core_user

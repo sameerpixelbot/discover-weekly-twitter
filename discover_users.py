@@ -51,7 +51,7 @@ for user in users:
 replied_to=sorted(replied_to.items(),key=lambda x:x[1],reverse=True)
 
 #getting the percentage
-percentage=int(input(f'The number of people is {len(replied_to)}, Please enter percentage : '))/100
+percentage=float(input(f'The number of people is {len(replied_to)}, Please enter percentage : '))/100
 replied_to=replied_to[:int(len(replied_to)*percentage)]
 
 #printing in users.txt
