@@ -23,8 +23,8 @@ if seven_days_back.year==today.year :
         
         activity=0
         for tweet in db.tweets.find({'$and':[{'user.id':user['user']['id']},
-                                     {'$and':[{'downloaded_day_year':{'$gt':int(seven_days_back.strftime('%j'))}},{'downloaded_year':seven_days_back.year}]},
-                                     {'$and':[{'downloaded_day_year':{'$lte':int(today.strftime('%j'))}},{'downloaded_year':today.year}]}
+                                     {'$and':[{'created_day':{'$gt':int(seven_days_back.strftime('%j'))}},{'created_year':seven_days_back.year}]},
+                                     {'$and':[{'created_day':{'$lte':int(today.strftime('%j'))}},{'created_year':today.year}]}
                                      ]}):
             activity=activity + 1
             
@@ -38,12 +38,12 @@ else:
         
         activity=0
         for tweet in db.tweets.find({'$and':[{'user.id':user['user']['id']},
-                                     {'$and':[{'downloaded_day_year':{'$gt':int(seven_days_back.strftime('%j'))}},{'downloaded_year':seven_days_back.year}]}
+                                     {'$and':[{'created_day':{'$gt':int(seven_days_back.strftime('%j'))}},{'created_year':seven_days_back.year}]}
                                      ]}):
             activity=activity+1
         
         for tweet in db.tweets.find({'$and':[{'user.id':user['user']['id']},
-                                     {'$and':[{'downloaded_day_year':{'$lte':int(today.strftime('%j'))}},{'downloaded_year':today.year}]}
+                                     {'$and':[{'created_day':{'$lte':int(today.strftime('%j'))}},{'created_year':today.year}]}
                                      ]}):
             activity=activity+1
             

@@ -10,8 +10,8 @@ with open(user_path,'r') as f:
     users=f.read()
 
 #list of users who got through manual inspection
-users=[users.split("'")[i] for i in range(len(users.split("'"))) if i%2!=0]
-users=[user[1:] for user in users if user[0]=='*']
+users={user.split(':')[0][:-1].split("'")[-1]:int(user.split(':')[1]) for user in users[1:-1].split(',')}
+users=[user[1:] for user in list(users.keys()) if user[0]=='*']
 
 #connect with twitter api 
 auth_path='E:/twitter_data/twitter_home_data/auth.txt'

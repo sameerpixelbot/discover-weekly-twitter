@@ -17,12 +17,12 @@ tweets=[]
 #getting tweets
 
 if day-7>=0:
-    tweets=[tweet for tweet in db.tweets.find({'$and':[{'downloaded_day_year':{'$gt':day-7}},{'downloaded_year':today.year}]})]
+    tweets=[tweet for tweet in db.tweets.find({'$and':[{'created_day':{'$gt':day-7}},{'created_year':today.year}]})]
 else:
-    tweets=[tweet for tweet in db.tweets.find({'$and':[{'downloaded_day_year':{'$gt':0}},{'downloaded_year':today.year}]})]
+    tweets=[tweet for tweet in db.tweets.find({'$and':[{'created_day':{'$gt':0}},{'created_year':today.year}]})]
     
     last_year_days=int(datetime.datetime(today.year-1,12,31).strftime('%j'))
-    last_tweets=[tweet for tweet in db.tweets.find({'$and':[{'downloaded_day_year':{'$gt':last_year_days+day-7}},{'downloaded_year':today.year-1}]})]
+    last_tweets=[tweet for tweet in db.tweets.find({'$and':[{'created_day':{'$gt':last_year_days+day-7}},{'created_year':today.year-1}]})]
     for tweet in last_tweets:
         tweets.append(tweet)
 
@@ -41,6 +41,17 @@ for tweet in tweets:
 users=[]
 for user in db.users.find({}):
     users.append(user['user']['screen_name'])
+#getting muted users
+mute_path='E:/twitter_data/discover_weekly_data&report/mute_list.txt'
+#getting muted users
+with open(mute_path,'r') as f:
+    muted_users=f.read()
+
+#converting str to dict
+muted_users={user.split(':')[0][:-1].split("'")[-1]:int(user.split(':')[1]) for user in muted_users[1:-1].split(',')}
+muted_users=list(muted_users.keys())
+#merging users,muted_users
+users=users+muted_users
 
 #removing the already present ones
 for user in users:
@@ -52,7 +63,7 @@ replied_to=sorted(replied_to.items(),key=lambda x:x[1],reverse=True)
 
 #getting the percentage
 percentage=float(input(f'The number of people is {len(replied_to)}, Please enter percentage : '))/100
-replied_to=replied_to[:int(len(replied_to)*percentage)]
+replied_to=dict(replied_to[:int(len(replied_to)*percentage)])
 
 #printing in users.txt
 user_path='E:/twitter_data/discover_weekly_data&report/users.txt'

@@ -7,16 +7,21 @@ import pymongo
 client=pymongo.MongoClient()
 db=client.twitter
 
-#connect with twitter api 
-auth_path='E:/twitter_data/twitter_home_data/auth.txt'
+#getting to twitter api info
+auth_path='E:/twitter_data/discover_weekly_data&report/auth.txt'
 
 with open(auth_path,'r') as f:
     auth=f.read()
-#auth details
-auth=auth.split(',')
 
-auth_details=tweepy.OAuthHandler(auth[0],auth[1])
-auth_details.set_access_token(auth[2],auth[3])
+auth=auth.split(';')
+
+for i in range(len(auth)):
+    auth[i]=auth[i].split(',')
+
+auth_no=int(input('Enter Auth number : '))
+
+auth_details=tweepy.OAuthHandler(auth[auth_no][0],auth[auth_no][1])
+auth_details.set_access_token(auth[auth_no][2],auth[auth_no][3])
 
 api=tweepy.API(auth_details,wait_on_rate_limit=True,wait_on_rate_limit_notify=True)
 
@@ -65,6 +70,8 @@ for user in users:
     print(i,user,j)
     for tweet in tmpTweets:
         if tweet.created_at < endDate and tweet.created_at > startDate:
+            tweet._json['created_day']=int(tweet.created_at.strftime('%j'))
+            tweet._json['created_year']=tweet.created_at.year
             tweets.append(tweet)
     
     try:
@@ -81,6 +88,8 @@ for user in users:
             print(i,user,j)
             for tweet in tmpTweets:
                 if tweet.created_at < endDate and tweet.created_at > startDate:
+                    tweet._json['created_day']=int(tweet.created_at.strftime('%j'))
+                    tweet._json['created_year']=tweet.created_at.year
                     tweets.append(tweet)
     except IndexError :
         print('*=*=*=*=  NO TWEETS BY  *=*=*=*=*=',user,j)
