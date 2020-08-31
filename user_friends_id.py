@@ -116,6 +116,10 @@ while user_no<len(users):
                         print('skipping user : ',users[user_no]['user']['screen_name'],user_no)
                         user_no=user_no+1
             
+            else:
+                print(5,' ',e.args)
+                print('skipping user : ',users[user_no]['user']['screen_name'],user_no)
+                user_no=user_no+1
             
         except Exception as e:
             print(4,' ',e.args)

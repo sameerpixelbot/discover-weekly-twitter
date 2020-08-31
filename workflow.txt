@@ -1,16 +1,20 @@
 step 1
-E:\twitter\discover_weekly_twitter\tweets_scraper.py -all
-E:\twitter\discover_weekly_twitter\user_friends_id.py -all
+python E:\twitter\discover_weekly_twitter\tweets_scraper.py -all
+python E:\twitter\discover_weekly_twitter\user_friends_id.py -all
 
-E:\twitter\discover_weekly_twitter\delete_user.py -optional when someone delets their account and re run
+python E:\twitter\discover_weekly_twitter\delete_user.py -optional when someone delets their account and re run
 step 2
-E:\twitter\discover_weekly_twitter\discover_users.py
+python E:\twitter\discover_weekly_twitter\discover_users.py
 step 3
-E:\twitter\discover_weekly_twitter\user_muter.py
+python E:\twitter\discover_weekly_twitter\user_muter.py
 step 4
-E:\twitter\discover_weekly_twitter\user_maker.py
+python E:\twitter\discover_weekly_twitter\user_maker.py
 step 5
-E:\twitter\discover_weekly_twitter\tweets_scraper.py -new
-E:\twitter\discover_weekly_twitter\user_friends_id.py -new
+python E:\twitter\discover_weekly_twitter\tweets_scraper.py -new
+python E:\twitter\discover_weekly_twitter\user_friends_id.py -new
 step 6
-E:\twitter\discover_weekly_twitter\user_meta_updates.py
+python E:\twitter\discover_weekly_twitter\user_meta_updates.py
+step 7
+python E:\twitter\discover_weekly_twitter\bond_weight_calculator.py
+step 8
+python E:\twitter\discover_weekly_twitter\cluster_users

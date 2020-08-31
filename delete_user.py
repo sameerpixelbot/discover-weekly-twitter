@@ -29,4 +29,4 @@ for user in users:
                         {'$set':{'edges':user['edges']}})
 
 #removing user
-db.users.remove_one({'_id':_id})
+db.users.delete_one({'_id':_id})

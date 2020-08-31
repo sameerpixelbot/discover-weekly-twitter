@@ -41,6 +41,8 @@ for tweet in tweets:
 users=[]
 for user in db.users.find({}):
     users.append(user['user']['screen_name'])
+
+
 #getting muted users
 mute_path='E:/twitter_data/discover_weekly_data&report/mute_list.txt'
 #getting muted users
@@ -50,8 +52,21 @@ with open(mute_path,'r') as f:
 #converting str to dict
 muted_users={user.split(':')[0][:-1].split("'")[-1]:int(user.split(':')[1]) for user in muted_users[1:-1].split(',')}
 muted_users=list(muted_users.keys())
+
+#getting blocked users
+#block_list path
+block_path='E:/twitter_data/discover_weekly_data&report/block_list.txt'
+#getting muted users
+with open(block_path,'r') as f:
+    blocked_users=f.read()
+
+#converting str to dict
+blocked_users={user.split(':')[0][:-1].split("'")[-1]:int(user.split(':')[1]) for user in blocked_users[1:-1].split(',')}
+blocked_users=list(blocked_users.keys())
+
+
 #merging users,muted_users
-users=users+muted_users
+users=users+muted_users+blocked_users
 
 #removing the already present ones
 for user in users:

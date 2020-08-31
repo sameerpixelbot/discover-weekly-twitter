@@ -59,7 +59,7 @@ for user in users:
         #inserting in user_objects list
         user_objects.append(user_dict)
     except tweepy.TweepError:
-        print(i,' ',user)
+        print(i,' ',user,tweepy.TweepError)
     i=i+1
 
 #connecting to mongodb
