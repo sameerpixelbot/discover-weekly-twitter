@@ -48,17 +48,29 @@ print(cluster.summary())
 #printing to a file
 cluster_path='E:/twitter_data/discover_weekly_data&report/clusters.txt'
 with open(cluster_path,'w') as f:
-    #writing summary
+    #writing summary of users
     f.write(cluster.summary())
     f.write('\n')
     f.write('\n')
     
     #writing lists
     for cluster_number in range(len(cluster_list)):
+        
         #writing cluster_number
         f.write(f"The Cluster number : {cluster_number} as size is {len(cluster_list[cluster_number])}\n")
         f.write('\n')
+        
         for member in cluster_list[cluster_number]:
             f.write(member[0])
             f.write('\n')
+        f.write('\n')
+        f.write('\n')
+        
+        f.write(f"The Cluster number : {cluster_number} as size of edges {len(cluster.subgraphs()[cluster_number].es)}\n")
+        f.write('\n')
+        for edge in cluster.subgraphs()[cluster_number].es:
+            
+            f.write(f"({cluster.subgraphs()[cluster_number].vs[edge.source]['name']},{cluster.subgraphs()[cluster_number].vs[edge.source]['size']}) {edge['weight']} ({cluster.subgraphs()[cluster_number].vs[edge.target]['name']})\n")
+        
+        f.write('\n')
         f.write('\n')

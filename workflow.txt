@@ -17,4 +17,6 @@ python E:\twitter\discover_weekly_twitter\user_meta_updates.py
 step 7
 python E:\twitter\discover_weekly_twitter\bond_weight_calculator.py
 step 8
-python E:\twitter\discover_weekly_twitter\cluster_users
+python E:\twitter\discover_weekly_twitter\cluster_users.py
+step 9
+python E:\twitter\discover_weekly_twitter\trends.py

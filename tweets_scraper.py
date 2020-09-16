@@ -72,6 +72,7 @@ for user in users:
         if tweet.created_at < endDate and tweet.created_at > startDate:
             tweet._json['created_day']=int(tweet.created_at.strftime('%j'))
             tweet._json['created_year']=tweet.created_at.year
+            tweet._json['tweeted_hour']=int(tweet._json['created_at'][11:13])
             tweets.append(tweet)
     
     try:
@@ -90,6 +91,7 @@ for user in users:
                 if tweet.created_at < endDate and tweet.created_at > startDate:
                     tweet._json['created_day']=int(tweet.created_at.strftime('%j'))
                     tweet._json['created_year']=tweet.created_at.year
+                    tweet._json['tweeted_hour']=int(tweet._json['created_at'][11:13])
                     tweets.append(tweet)
     except IndexError :
         print('*=*=*=*=  NO TWEETS BY  *=*=*=*=*=',user,j)

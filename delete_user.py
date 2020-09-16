@@ -13,6 +13,7 @@ users=[]
 for user in db.users.find({}):
     users.append(user)
 
+print(len(users))
 
 for user in users:
     
@@ -20,13 +21,17 @@ for user in users:
         _id=user['_id']
     
     for i in range(len(user['edges'])):
-        
         if user['edges'][i]['screen_name']==screen_name:
             pos=i
     
-    user['edges'].pop(pos)
-    db.users.update_one({'_id':user['_id']},
-                        {'$set':{'edges':user['edges']}})
+    try:
+        user['edges'].pop(pos)
+    except Exception as e:
+        print(e)
+    
+    db.users.update_one(
+        {'_id':user['_id']},
+        {'$set':{'edges':user['edges']}})
 
 #removing user
 db.users.delete_one({'_id':_id})
