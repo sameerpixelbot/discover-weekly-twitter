@@ -7,7 +7,7 @@ So a possible solution to the above problems is detect topics of discussion in t
 So lets look at the project attempting to solve the above problem.
 
 ### Architecture:
-
+![](Architecture_dwt.jpg)
 The project is divided into 3 parts:  
 1. Data Collection
 2. User Management
