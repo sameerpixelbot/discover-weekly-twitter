@@ -75,3 +75,10 @@ files: [user_meta_updates.py](https://github.com/sameerpixelbot/discover-weekly-
 - In order to use this project please refer to the deployable project : [Discover Weekly Twitter Deployed](https://github.com/sameerpixelbot/discover_weekly_twitter_deployed)
 
 - In order to use this as scripts refer to [workflow.txt](https://github.com/sameerpixelbot/discover-weekly-twitter/blob/master/workflow.txt) to see the workflow
+
+### Future:
+
+- Since the Twitter API version 2.0 is out we dont need to cluster tweets
+- This version can reconstruct conversions
+- I did not implement this as my other projects depend on the old API so I may update in the future
+- We can not only see for trends we can also track group intrests and be able to predict it
